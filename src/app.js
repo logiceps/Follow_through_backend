@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { DB_NAME } from "./constants";
+import { DB_NAME } from "./constants.js";
 import cookieParser from "cookie-parser";
 
 const app = express();
@@ -13,5 +13,13 @@ app.use(express.urlencoded({extended: true, limit: "16kb"}));
 app.use(express.static("public"));
 app.use(cookieParser());
 
+// Routes
+import userRouter from "./routes/user.routes.js";
 
-export {app}
+
+// routes declaration 
+app.use("/api/v1/users",userRouter);
+
+
+
+export {app};
